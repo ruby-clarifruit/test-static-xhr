@@ -15,6 +15,7 @@
                     return `<li><b>${item.name}</b> : <a href='${item.url}'>${item.url}</a></li>`;
                 });
                 document.all["result-area"].innerHTML = names.join("<br/>");
+                document.all["callapi-button"].style.display = "none";
             }
         };
         xhr.send();    
