@@ -1,7 +1,7 @@
-<button onclick="loadPeople()">Call the Star Wars People API</button><br/><br />
-<button onclick="document.all.result.innerHTML = ''">Clear!</button><br /><br />
+<button id="callapi-button" onclick="loadPeople()">Call the Star Wars People API</button><br/><br />
+<button id="clear-button" onclick="document.all['result-area'].innerHTML = ''">Clear!</button><br /><br />
 <br />
-<pre id="result"></pre>
+<pre id="result-area"></pre>
 
 <script>
 
@@ -14,7 +14,7 @@
                 var names = json.results.map(function (item) {
                     return `<li><b>${item.name}</b> : <a href='${item.url}'>${item.url}</a></li>`;
                 });
-                document.all.result.innerHTML = names.join("<br/>");
+                document.all["result-area"].innerHTML = names.join("<br/>");
             }
         };
         xhr.send();    
