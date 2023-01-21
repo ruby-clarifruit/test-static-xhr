@@ -1,1 +1,23 @@
-<button>Click Me</button>
+<button onclick="loadPeople()">Call the Star Wars People API</button><br/><br />
+<button onclick="document.all.result.innerHTML = ''">Clear!</button><br /><br />
+<br />
+<pre id="result"></pre>
+
+<script>
+
+    function loadPeople() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://swapi.dev/api/people/", true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var json = JSON.parse(xhr.responseText);
+                var names = json.results.map(function (item) {
+                    return `<li><b>${item.name}</b> : <a href='${item.url}'>${item.url}</a></li>`;
+                });
+                document.all.result.innerHTML = names.join("<br/>");
+            }
+        };
+        xhr.send();    
+    }
+
+</script>
